@@ -4,7 +4,7 @@ import { useState } from 'react';
 function InformationPage() {
   const [selectedBuyou, setSelectedBuyou] = useState('murabaha');
 
-  const BuyouCard = ({ id, title, subtitle, icon, color, isSelected, onClick }) => {
+  const BuyouCard = ({ id, title, icon, color, isSelected, onClick }) => {
     const getColorClasses = (color) => {
       const colors = {
         emerald: { bg: 'bg-emerald-100', text: 'text-emerald-600', gradient: 'from-emerald-500 to-emerald-600', border: 'border-emerald-200' },
@@ -40,11 +40,7 @@ function InformationPage() {
         }`}>
           {title}
         </h3>
-        <p className={`text-sm ${
-          isSelected ? 'text-emerald-100' : 'text-gray-600'
-        }`}>
-          {subtitle}
-        </p>
+        
       </button>
     );
   };
@@ -56,7 +52,7 @@ function InformationPage() {
           <Scale className="w-10 h-10 text-white" />
         </div>
         <h2 className="text-4xl font-bold text-gray-900 mb-4">المرابحة</h2>
-        <p className="text-xl text-gray-600">بيع التقسيط الشرعي</p>
+        
       </div>
 
       {/* التعريف */}
@@ -361,6 +357,115 @@ function InformationPage() {
         </div>
       </section>
 
+      {/* الشروط المشتركة لصحة البيع */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl shadow-xl p-8 md:p-12">
+            <div className="text-center mb-12">
+              <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-gray-600 to-gray-700">
+                <CheckCircle className="w-10 h-10 text-white" />
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                الشروط المشتركة لصحة أي بيع
+              </h2>
+              <p className="text-xl text-gray-600">
+                الأسس الشرعية العامة التي يجب توفرها في جميع البيوع
+              </p>
+            </div>
+
+            <div className="space-y-12">
+              {/* الصيغة */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                  <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center text-lg font-bold ml-3">1</div>
+                  الصيغة
+                </h3>
+                <div className="bg-gray-50 p-6 rounded-xl">
+                  <p className="text-gray-700 leading-relaxed">
+                    وهي إيجاب كبعت، وقبول كاشتريت، وما يقوم مقام الصيغة كالإشارة من الأبكم والأصم، ومجرد المناولة في المحقرات، وما علم الجميع أثمانه الثابتة من غيرها.
+                  </p>
+                </div>
+              </div>
+
+              {/* العاقدان */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                  <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center text-lg font-bold ml-3">2</div>
+                  العاقدان
+                </h3>
+                <div className="bg-gray-50 p-6 rounded-xl">
+                  <p className="text-gray-700 leading-relaxed">
+                    ويشترط فيهما الأهلية وهي أن يكونا عاقلين راشدين وراضين بالبيع.
+                  </p>
+                </div>
+              </div>
+
+              {/* المعقود عليه */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                  <div className="w-8 h-8 bg-gray-600 text-white rounded-full flex items-center justify-center text-lg font-bold ml-3">3</div>
+                  المعقود عليه
+                </h3>
+                <div className="bg-gray-50 p-6 rounded-xl mb-4">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    وهو المبيع والثمن ويشترط فيهما شروط نجملها في الآتي:
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-gray-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">1</div>
+                      <p className="text-gray-700">أن يكونا موجودين فلا يصح بيع المعدوم ولا جعله ثمنا باتفاق الفقهاء، ولا خلاف بينهم في استثناء السلم فهو بيع صحيح مع أنه بيع لمعدوم.</p>
+                    </div>
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-gray-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">2</div>
+                      <p className="text-gray-700">أن يكونا طاهرين منتفعا بهما انتفاعا معتبرا شرعا.</p>
+                    </div>
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-gray-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">3</div>
+                      <p className="text-gray-700">أن يكون من يلي العقد مالكا أو نائبا عن المالك.</p>
+                    </div>
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-gray-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">4</div>
+                      <p className="text-gray-700">أن يكونا مقدورا على تسليم كل منهما.</p>
+                    </div>
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-gray-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">5</div>
+                      <p className="text-gray-700">أن يكونا معلومين للعاقدين.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* البيوع المنهي عنها */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                  <AlertCircle className="w-8 h-8 ml-3 text-red-600" />
+                  البيوع المنهي عنها
+                </h3>
+                <div className="bg-red-50 p-6 rounded-xl">
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    مرجعها إلى ثلاثة أشياء:
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">1</div>
+                      <p className="text-gray-700">الربا بأنواعه</p>
+                    </div>
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">2</div>
+                      <p className="text-gray-700">الغش والخداع</p>
+                    </div>
+                    <div className="flex items-start space-x-3 space-x-reverse">
+                      <div className="w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">3</div>
+                      <p className="text-gray-700">الجهالة والتغرير</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Buyou3 Navigation - Using Flexbox */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -368,7 +473,6 @@ function InformationPage() {
             <BuyouCard 
               id="murabaha"
               title="المرابحة" 
-              subtitle="بيع التقسيط الشرعي"
               icon={<Scale className="w-8 h-8" />}
               color="emerald"
               isSelected={selectedBuyou === 'murabaha'}
@@ -377,7 +481,6 @@ function InformationPage() {
             <BuyouCard 
               id="musharaka"
               title="المشاركة" 
-              subtitle="الشراكة في رأس المال"
               icon={<Users className="w-8 h-8" />}
               color="blue"
               isSelected={selectedBuyou === 'musharaka'}
@@ -386,7 +489,6 @@ function InformationPage() {
             <BuyouCard 
               id="salam"
               title="السلم" 
-              subtitle="البيع المؤجل التسليم"
               icon={<BookOpen className="w-8 h-8" />}
               color="purple"
               isSelected={selectedBuyou === 'salam'}
@@ -395,7 +497,6 @@ function InformationPage() {
             <BuyouCard 
               id="istisna"
               title="الاستصناع" 
-              subtitle="عقد تصنيع السلع"
               icon={<Heart className="w-8 h-8" />}
               color="orange"
               isSelected={selectedBuyou === 'istisna'}
