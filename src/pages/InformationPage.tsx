@@ -1,10 +1,11 @@
 import { Shield, BookOpen, Users, CheckCircle, Star, ArrowRight, Info, Scale, Heart, AlertCircle, Target } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function InformationPage() {
   const [selectedBuyou, setSelectedBuyou] = useState('murabaha');
 
-  const BuyouCard = ({ id, title, icon, color, isSelected, onClick }) => {
+  const BuyouCard = ({ id, title, subtitle, icon, color, isSelected, onClick }) => {
     const getColorClasses = (color) => {
       const colors = {
         emerald: { bg: 'bg-emerald-100', text: 'text-emerald-600', gradient: 'from-emerald-500 to-emerald-600', border: 'border-emerald-200' },
@@ -40,7 +41,11 @@ function InformationPage() {
         }`}>
           {title}
         </h3>
-        
+        <p className={`text-sm ${
+          isSelected ? 'text-emerald-100' : 'text-gray-600'
+        }`}>
+          {subtitle}
+        </p>
       </button>
     );
   };
@@ -52,7 +57,7 @@ function InformationPage() {
           <Scale className="w-10 h-10 text-white" />
         </div>
         <h2 className="text-4xl font-bold text-gray-900 mb-4">المرابحة</h2>
-        
+        <p className="text-xl text-gray-600">بيع التقسيط الشرعي</p>
       </div>
 
       {/* التعريف */}
@@ -136,6 +141,76 @@ function InformationPage() {
             دخل زبون إلى محل إلكترونيات لشراء هاتف.<br/>
             قال له البائع: "أنا اشتريت هذا الهاتف بـ60,000 دينار، وأبيعه لك بربح 6,000 دينار، يعني المجموع 66,000 دينار."<br/>
             وافق الزبون، وتم البيع.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
+  const InstallmentContent = () => (
+    <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+      <div className="text-center mb-12">
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-teal-500 to-teal-600">
+          <CheckCircle className="w-10 h-10 text-white" />
+        </div>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">البيع بالتقسيط</h2>
+        <p className="text-xl text-gray-600">دفع بأقساط محددة</p>
+      </div>
+
+      {/* التعريف */}
+      <div className="mb-12">
+        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <Info className="w-6 h-6 ml-3 text-teal-600" />
+          التعريف
+        </h3>
+        <div className="bg-teal-50 p-6 rounded-xl">
+          <p className="text-gray-700 leading-relaxed text-lg">
+            هو بيع سلعة بثمن مؤجل يدفع على دفعات (أقساط) على فترات زمنية محددة، ويكون الثمن في هذه الحالة أعلى من الثمن الحال (النقدي)
+          </p>
+        </div>
+      </div>
+
+      {/* الشروط */}
+      <div className="mb-12">
+        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <CheckCircle className="w-6 h-6 ml-3 text-teal-600" />
+          شروط البيع بالتقسيط
+        </h3>
+        <div className="space-y-4">
+          <div className="flex items-start space-x-3 space-x-reverse">
+            <div className="w-6 h-6 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">1</div>
+            <p className="text-gray-700">أن يكون المبيع مملوكاً للبائع وقت العقد</p>
+          </div>
+          <div className="flex items-start space-x-3 space-x-reverse">
+            <div className="w-6 h-6 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">2</div>
+            <div>
+              <p className="text-gray-700 font-semibold">أن يكون المبيع مقبوضاً للبائع:</p>
+              <p className="text-gray-600 text-sm mt-1">لا يجوز بيع سلعة لم يستلمها البائع بعد</p>
+            </div>
+          </div>
+          <div className="flex items-start space-x-3 space-x-reverse">
+            <div className="w-6 h-6 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">3</div>
+            <p className="text-gray-700">ألا يشترط البائع زيادة في الثمن إذا تأخر المشتري عن السداد</p>
+          </div>
+          <div className="flex items-start space-x-3 space-x-reverse">
+            <div className="w-6 h-6 bg-teal-500 text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">4</div>
+            <div>
+              <p className="text-gray-700 font-semibold">أن يكون الثمن في مقابل السلعة:</p>
+              <p className="text-gray-600 text-sm mt-1">لا يجوز أن يكون البيع بالتقسيط مجرد حيلة لاقتراض المال بفائدة</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* مثال عملي */}
+      <div className="mb-8">
+        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+          <BookOpen className="w-6 h-6 ml-3 text-purple-600" />
+          مثال عملي
+        </h3>
+        <div className="bg-purple-50 p-6 rounded-xl">
+          <p className="text-gray-700 leading-relaxed">
+            [أضف هنا مثالاً عملياً للبيع بالتقسيط]
           </p>
         </div>
       </div>
@@ -314,6 +389,7 @@ function InformationPage() {
   const renderSelectedContent = () => {
     switch(selectedBuyou) {
       case 'murabaha': return <MurabahaContent />;
+      case 'installment': return <InstallmentContent />;
       case 'musharaka': return <MusharakaContent />;
       case 'salam': return <SalamContent />;
       case 'istisna': return <IstisnaContent />;
@@ -334,9 +410,12 @@ function InformationPage() {
               <h1 className="text-2xl font-bold text-emerald-800">ميثاق</h1>
             </div>
             <nav className="flex items-center space-x-6 space-x-reverse">
-              <a href="/" className="text-gray-700 hover:text-emerald-600 transition-colors">
-                الرئيسية
-              </a>
+               <Link to="/" >
+                <p className="text-gray-700 hover:text-emerald-600 transition-colors">
+                الرئيسية 
+                </p>
+              </Link>
+             
               <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg transition-colors">
                 ابدأ الآن
               </button>
@@ -473,14 +552,25 @@ function InformationPage() {
             <BuyouCard 
               id="murabaha"
               title="المرابحة" 
+              subtitle="بيع التقسيط الشرعي"
               icon={<Scale className="w-8 h-8" />}
               color="emerald"
               isSelected={selectedBuyou === 'murabaha'}
               onClick={() => setSelectedBuyou('murabaha')}
             />
             <BuyouCard 
+              id="installment"
+              title="البيع بالتقسيط" 
+              subtitle="دفع بأقساط محددة"
+              icon={<CheckCircle className="w-8 h-8" />}
+              color="teal"
+              isSelected={selectedBuyou === 'installment'}
+              onClick={() => setSelectedBuyou('installment')}
+            />
+            <BuyouCard 
               id="musharaka"
               title="المشاركة" 
+              subtitle="الشراكة في رأس المال"
               icon={<Users className="w-8 h-8" />}
               color="blue"
               isSelected={selectedBuyou === 'musharaka'}
@@ -489,6 +579,7 @@ function InformationPage() {
             <BuyouCard 
               id="salam"
               title="السلم" 
+              subtitle="البيع المؤجل التسليم"
               icon={<BookOpen className="w-8 h-8" />}
               color="purple"
               isSelected={selectedBuyou === 'salam'}
@@ -497,6 +588,7 @@ function InformationPage() {
             <BuyouCard 
               id="istisna"
               title="الاستصناع" 
+              subtitle="عقد تصنيع السلع"
               icon={<Heart className="w-8 h-8" />}
               color="orange"
               isSelected={selectedBuyou === 'istisna'}
@@ -514,12 +606,12 @@ function InformationPage() {
           {/* CTA */}
           <div className="text-center mt-12 pt-8 border-t border-gray-200">
             <p className="text-gray-600 mb-6">جاهز لإنشاء عقد متوافق مع الشريعة؟</p>
-            <a href="/transactions">
+            <Link to="/transactions">
               <button className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all hover:scale-105 inline-flex items-center">
                 إنشاء عقد جديد
                 <ArrowRight className="w-5 h-5 mr-3" />
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

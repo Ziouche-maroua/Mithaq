@@ -48,7 +48,8 @@ function App() {
               <Link to="/information">
               <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all hover:scale-105">
                 استكشف العقود الحلال
-              </button></Link>
+              </button>
+              </Link>
               <button className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all">
                 شاهد كيف يعمل
               </button>
