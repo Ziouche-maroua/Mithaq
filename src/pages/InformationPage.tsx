@@ -1,11 +1,11 @@
-import { Shield, BookOpen, Users, CheckCircle, Star, ArrowRight, Info, Scale, Heart, AlertCircle, Target } from 'lucide-react';
+import { Shield, BookOpen, Users, CheckCircle, Star, ArrowRight, Info, Scale, Heart, AlertCircle, Target, TrendingUp, Wrench } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function InformationPage() {
   const [selectedBuyou, setSelectedBuyou] = useState('murabaha');
 
-  const BuyouCard = ({ id, title, subtitle, icon, color, isSelected, onClick }) => {
+  const BuyouCard = ({ id, title, icon, color, isSelected, onClick }) => {
     const getColorClasses = (color) => {
       const colors = {
         emerald: { bg: 'bg-emerald-100', text: 'text-emerald-600', gradient: 'from-emerald-500 to-emerald-600', border: 'border-emerald-200' },
@@ -41,11 +41,7 @@ function InformationPage() {
         }`}>
           {title}
         </h3>
-        <p className={`text-sm ${
-          isSelected ? 'text-emerald-100' : 'text-gray-600'
-        }`}>
-          {subtitle}
-        </p>
+        
       </button>
     );
   };
@@ -57,7 +53,6 @@ function InformationPage() {
           <Scale className="w-10 h-10 text-white" />
         </div>
         <h2 className="text-4xl font-bold text-gray-900 mb-4">المرابحة</h2>
-        <p className="text-xl text-gray-600">بيع التقسيط الشرعي</p>
       </div>
 
       {/* التعريف */}
@@ -147,14 +142,13 @@ function InformationPage() {
     </div>
   );
 
-  const InstallmentContent = () => (
+  const TaqsitContent = () => (
     <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
       <div className="text-center mb-12">
         <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-teal-500 to-teal-600">
           <CheckCircle className="w-10 h-10 text-white" />
         </div>
         <h2 className="text-4xl font-bold text-gray-900 mb-4">البيع بالتقسيط</h2>
-        <p className="text-xl text-gray-600">دفع بأقساط محددة</p>
       </div>
 
       {/* التعريف */}
@@ -210,187 +204,268 @@ function InformationPage() {
         </h3>
         <div className="bg-purple-50 p-6 rounded-xl">
           <p className="text-gray-700 leading-relaxed">
-            [أضف هنا مثالاً عملياً للبيع بالتقسيط]
-          </p>
+شراء سيارة قيمتها 1500.000 دينار نقدًا، ولكن بالتقسيط لمدة سنة يصبح سعرها 2000.000 ريال، ويسدد المشتري 50.000 دينار شهريًا.          </p>
         </div>
       </div>
     </div>
   );
 
-  const MusharakaContent = () => (
-    <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-      <div className="text-center mb-12">
-        <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-600">
-          <Users className="w-10 h-10 text-white" />
-        </div>
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">المشاركة</h2>
-        <p className="text-xl text-gray-600">الشراكة في رأس المال</p>
-      </div>
 
-      {/* التعريف */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <Info className="w-6 h-6 ml-3 text-blue-600" />
-          التعريف
-        </h3>
-        <div className="bg-blue-50 p-6 rounded-xl">
-          <p className="text-gray-700 leading-relaxed text-lg">
-            [أضف هنا تعريف المشاركة وأحكامها الشرعية]
-          </p>
-        </div>
-      </div>
-
-      {/* أنواع المشاركة */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <Target className="w-6 h-6 ml-3 text-blue-600" />
-          أنواع المشاركة
-        </h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-blue-50 p-6 rounded-xl">
-            <h4 className="font-bold text-gray-900 mb-3">المشاركة الثابتة</h4>
-            <p className="text-gray-700">[أضف وصف المشاركة الثابتة]</p>
-          </div>
-          <div className="bg-blue-50 p-6 rounded-xl">
-            <h4 className="font-bold text-gray-900 mb-3">المشاركة المتناقصة</h4>
-            <p className="text-gray-700">[أضف وصف المشاركة المتناقصة]</p>
-          </div>
-        </div>
-      </div>
-
-      {/* الشروط */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <CheckCircle className="w-6 h-6 ml-3 text-blue-600" />
-          الشروط الشرعية
-        </h3>
-        <div className="space-y-4">
-          <div className="flex items-start space-x-3 space-x-reverse">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
-            <p className="text-gray-700">[أضف الشرط الأول للمشاركة]</p>
-          </div>
-          <div className="flex items-start space-x-3 space-x-reverse">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
-            <p className="text-gray-700">[أضف الشرط الثاني]</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 
   const SalamContent = () => (
-    <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-      <div className="text-center mb-12">
-        <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-purple-500 to-purple-600">
-          <BookOpen className="w-10 h-10 text-white" />
-        </div>
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">السلم</h2>
-        <p className="text-xl text-gray-600">البيع المؤجل التسليم</p>
+  <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+    <div className="text-center mb-12">
+      <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-purple-500 to-purple-600">
+        <BookOpen className="w-10 h-10 text-white" />
       </div>
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">السلم</h2>
+    </div>
 
-      {/* التعريف */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <Info className="w-6 h-6 ml-3 text-purple-600" />
-          التعريف
-        </h3>
-        <div className="bg-purple-50 p-6 rounded-xl">
-          <p className="text-gray-700 leading-relaxed text-lg">
-            [أضف هنا تعريف السلم وأحكامه الشرعية]
-          </p>
-        </div>
+    {/* التعريف */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <Info className="w-6 h-6 ml-3 text-purple-600" />
+        التعريف
+      </h3>
+      <div className="bg-purple-50 p-6 rounded-xl">
+        <p className="text-gray-700 leading-relaxed text-lg">
+          هو عقد بيع يقدِّم فيه المشتري (المسلم) الثمن نقدًا في مجلس العقد، على أن يسلّم البائع (المسلم إليه) السلعة موصوفة في الذمة مؤجَّلة في وقت معلوم.
+        </p>
       </div>
+    </div>
 
-      {/* الخصائص */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <Star className="w-6 h-6 ml-3 text-purple-600" />
-          خصائص عقد السلم
-        </h3>
-        <div className="space-y-4">
-          <div className="flex items-start space-x-3 space-x-reverse">
-            <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
-            <p className="text-gray-700">[أضف الخاصية الأولى]</p>
-          </div>
-          <div className="flex items-start space-x-3 space-x-reverse">
-            <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
-            <p className="text-gray-700">[أضف الخاصية الثانية]</p>
-          </div>
-        </div>
+    {/* مثال توضيحي */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <Star className="w-6 h-6 ml-3 text-purple-600" />
+        مثال توضيحي
+      </h3>
+      <div className="bg-purple-50 p-6 rounded-xl">
+        <p className="text-gray-700 leading-relaxed text-lg">
+          شخص يعطيك المال الآن لشراء 100 كغ من القمح تُسلِّمها له بعد 3 أشهر، أو التعاقد مع شخص لشراء سيارة بمواصفات معينة (نوعها وموديلها وسنة الصنع) مقابل دفع المبلغ مقدماً وتسليم السيارة في موعد متفق عليه.
+        </p>
       </div>
+    </div>
 
-      {/* المحظورات */}
-      <div className="mb-8">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <AlertCircle className="w-6 h-6 ml-3 text-red-600" />
-          المحظورات في السلم
-        </h3>
-        <div className="space-y-4">
-          <div className="flex items-start space-x-3 space-x-reverse">
-            <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-            <p className="text-gray-700">[أضف المحظور الأول]</p>
-          </div>
-          <div className="flex items-start space-x-3 space-x-reverse">
-            <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-            <p className="text-gray-700">[أضف المحظور الثاني]</p>
-          </div>
+    {/* الشروط */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <CheckCircle className="w-6 h-6 ml-3 text-purple-600" />
+        الشروط الشرعية
+      </h3>
+      <div className="space-y-4">
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">دفع الثمن كاملاً في مجلس العقد</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">تعيين أجل محدد للتسليم</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">تعيين جنس ونوع وقدر وصفة السلعة</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">أن تكون السلعة مما يمكن ضبط صفاتها وتسليمها في المستقبل</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">لا يجوز أن تكون السلعة من الأشياء النادرة أو التي لا تتوفر عادة وقت التسليم</p>
         </div>
       </div>
     </div>
-  );
 
-  const IstisnaContent = () => (
-    <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-      <div className="text-center mb-12">
-        <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-orange-500 to-orange-600">
-          <Heart className="w-10 h-10 text-white" />
+    {/* الفرق بين السلم وبيع ما لا يملك */}
+    <div className="mb-8">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <AlertCircle className="w-6 h-6 ml-3 text-orange-600" />
+        الفرق بين السلم وبيع ما لا يملك
+      </h3>
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
+          <h4 className="font-bold text-gray-900 mb-3 text-green-800">السَّلَم (جائز)</h4>
+          <p className="text-gray-700">بيع لشيء موصوف في الذمة مع دفع الثمن مقدماً، والمبيع ثابت في الذمة</p>
         </div>
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">الاستصناع</h2>
-        <p className="text-xl text-gray-600">عقد تصنيع السلع</p>
-      </div>
-
-      {/* التعريف */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <Info className="w-6 h-6 ml-3 text-orange-600" />
-          التعريف
-        </h3>
-        <div className="bg-orange-50 p-6 rounded-xl">
-          <p className="text-gray-700 leading-relaxed text-lg">
-            [أضف هنا تعريف الاستصناع وأحكامه الشرعية]
-          </p>
-        </div>
-      </div>
-
-      {/* مراحل العقد */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-          <Target className="w-6 h-6 ml-3 text-orange-600" />
-          مراحل عقد الاستصناع
-        </h3>
-        <div className="space-y-6">
-          <div className="bg-orange-50 p-6 rounded-xl">
-            <h4 className="font-bold text-gray-900 mb-3">المرحلة الأولى: التعاقد</h4>
-            <p className="text-gray-700">[أضف تفاصيل مرحلة التعاقد]</p>
-          </div>
-          <div className="bg-orange-50 p-6 rounded-xl">
-            <h4 className="font-bold text-gray-900 mb-3">المرحلة الثانية: التصنيع</h4>
-            <p className="text-gray-700">[أضف تفاصيل مرحلة التصنيع]</p>
-          </div>
-          <div className="bg-orange-50 p-6 rounded-xl">
-            <h4 className="font-bold text-gray-900 mb-3">المرحلة الثالثة: التسليم</h4>
-            <p className="text-gray-700">[أضف تفاصيل مرحلة التسليم]</p>
-          </div>
+        <div className="bg-red-50 p-6 rounded-xl border-l-4 border-red-500">
+          <h4 className="font-bold text-gray-900 mb-3 text-red-800">بيع ما لا يملك ( غير جائز )</h4>
+          <p className="text-gray-700">نهى عنه الرسول ﷺ "لا تبع ما ليس عندك" لأنه بيع لشيء غير مضمون الحصول</p>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
+const MudarabaContent = () => (
+  <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+    <div className="text-center mb-12">
+      <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-green-500 to-green-600">
+        <TrendingUp className="w-10 h-10 text-white" />
+      </div>
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">المضاربة</h2>
+      <p className="text-xl text-gray-600">المشاركة بالمضاربة</p>
+    </div>
+
+    {/* التعريف */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <Info className="w-6 h-6 ml-3 text-green-600" />
+        التعريف
+      </h3>
+      <div className="bg-green-50 p-6 rounded-xl">
+        <p className="text-gray-700 leading-relaxed text-lg">
+          عقد شراكة بين طرفين: صاحب المال (ربّ المال) يقدّم رأس المال، والمضارب (عامل) يقدم العمل والخبرة. والربح يُقسَّم بينهما حسب النسبة المتفق عليها، والخسارة يتحمّلها رب المال إلا إذا كان هناك تقصير من العامل.
+        </p>
+      </div>
+    </div>
+
+    {/* أطراف المضاربة */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <Users className="w-6 h-6 ml-3 text-green-600" />
+        أطراف المضاربة
+      </h3>
+      <div className="grid md:grid-cols-2 gap-6">
+        <div className="bg-green-50 p-6 rounded-xl">
+          <h4 className="font-bold text-gray-900 mb-3">صاحب المال (ربّ المال)</h4>
+          <p className="text-gray-700">يقدّم رأس المال ويتحمل الخسارة المالية في حال عدم تقصير العامل</p>
+        </div>
+        <div className="bg-green-50 p-6 rounded-xl">
+          <h4 className="font-bold text-gray-900 mb-3">المضارب (العامل)</h4>
+          <p className="text-gray-700">يقدم العمل والخبرة والجهد في إدارة رأس المال واستثماره</p>
+        </div>
+      </div>
+    </div>
+
+    {/* الشروط */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <CheckCircle className="w-6 h-6 ml-3 text-green-600" />
+        الشروط الشرعية
+      </h3>
+      <div className="space-y-4">
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-green-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">رأس المال معلوم ومحدد</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-green-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">أن يكون رأس المال غير مضمون (معرض للنقص في حال الخسارة) وإلّا أصبح عقد قرض ربوي</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-green-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">نسبة الربح محددة ومعلومة من الربح لا من رأس المال (مثلاً: 60% للمستثمر، 40% للعامل)</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-green-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">أن يكون الربح مشتركاً، لا مبلغاً ثابتاً لأحد الطرفين</p>
+        </div>
+      </div>
+    </div>
+
+    {/* مثال توضيحي */}
+    <div className="mb-8">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <Star className="w-6 h-6 ml-3 text-green-600" />
+        مثال توضيحي
+      </h3>
+      <div className="bg-green-50 p-6 rounded-xl">
+        <p className="text-gray-700 leading-relaxed text-lg">
+          مستثمر يعطي 100,000 دج لتاجر ليستثمرها في التجارة الإلكترونية، والأرباح تُقسم بينهما حسب النسبة المتفق عليها مسبقاً.
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
+const IstisnaContent = () => (
+  <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+    <div className="text-center mb-12">
+      <div className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 bg-gradient-to-br from-orange-500 to-orange-600">
+        <Wrench className="w-10 h-10 text-white" />
+      </div>
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">الاستصناع</h2>
+    </div>
+
+    {/* تنبيه فقهي */}
+    <div className="mb-12">
+      <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-xl">
+        <h4 className="font-bold text-gray-900 mb-3 flex items-center">
+          <AlertCircle className="w-5 h-5 ml-2 text-yellow-600" />
+          تنبيه فقهي
+        </h4>
+        <p className="text-gray-700 leading-relaxed">
+          ذهب الأئمة مالك والشافعي وأحمد إلى جعله بيع بالسّلَم، واشترطوا لصحته شروط السلم. أما الحنفية فقد جعله أكثرهم عقداً مغايراً للسلم فلا تجب فيه مراعاة شروطه وهذا هو رأي مجمع الفقه الإسلامي، والله أعلم.
+        </p>
+      </div>
+    </div>
+
+    {/* التعريف */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <Info className="w-6 h-6 ml-3 text-orange-600" />
+        التعريف
+      </h3>
+      <div className="bg-orange-50 p-6 rounded-xl">
+        <p className="text-gray-700 leading-relaxed text-lg">
+          هو عقد على صناعة شيء موصوف في الذمة بمقابل (ثمن) يدفع عاجلاً أو آجلاً.
+        </p>
+      </div>
+    </div>
+
+    {/* الشروط */}
+    <div className="mb-12">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <CheckCircle className="w-6 h-6 ml-3 text-orange-600" />
+        الشروط الشرعية
+      </h3>
+      <div className="space-y-4">
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-orange-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">تحديد مواصفات الشيء المطلوب تحديداً يمنع التنازع والخصام عند التسليم</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-orange-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">تحديد الثمن بوضوح (مقداراً وزمناً)</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-orange-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">الاتفاق على الأجل</p>
+        </div>
+        <div className="flex items-start space-x-3 space-x-reverse">
+          <div className="w-2 h-2 bg-orange-500 rounded-full mt-3 flex-shrink-0"></div>
+          <p className="text-gray-700">لا يشترط أن يكون ما يأتي به العامل من صنعه هو إلا إذا اشترط المستصنع ذلك</p>
+        </div>
+      </div>
+    </div>
+
+
+
+    {/* أمثلة */}
+    <div className="mb-8">
+      <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+        <Star className="w-6 h-6 ml-3 text-orange-600" />
+        أمثلة تطبيقية
+      </h3>
+      <div className="space-y-4">
+        <div className="bg-orange-50 p-4 rounded-lg">
+          <p className="text-gray-700">التعاقد مع خياط لخياطة بدلة حسب مقاسك ومواصفات محددة</p>
+        </div>
+        <div className="bg-orange-50 p-4 rounded-lg">
+          <p className="text-gray-700">الاتفاق مع مهندس لبناء بيت بمواد وصفات متفق عليها</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 
   const renderSelectedContent = () => {
     switch(selectedBuyou) {
       case 'murabaha': return <MurabahaContent />;
-      case 'installment': return <InstallmentContent />;
-      case 'musharaka': return <MusharakaContent />;
+      case 'taqsit': return <TaqsitContent />;
+      case 'musharaka': return <MudarabaContent />;
       case 'salam': return <SalamContent />;
       case 'istisna': return <IstisnaContent />;
       default: return <MurabahaContent />;
@@ -552,25 +627,22 @@ function InformationPage() {
             <BuyouCard 
               id="murabaha"
               title="المرابحة" 
-              subtitle="بيع التقسيط الشرعي"
               icon={<Scale className="w-8 h-8" />}
               color="emerald"
               isSelected={selectedBuyou === 'murabaha'}
               onClick={() => setSelectedBuyou('murabaha')}
             />
             <BuyouCard 
-              id="installment"
+              id="taqsit"
               title="البيع بالتقسيط" 
-              subtitle="دفع بأقساط محددة"
               icon={<CheckCircle className="w-8 h-8" />}
               color="teal"
-              isSelected={selectedBuyou === 'installment'}
-              onClick={() => setSelectedBuyou('installment')}
+              isSelected={selectedBuyou === 'taqsit'}
+              onClick={() => setSelectedBuyou('taqsit')}
             />
             <BuyouCard 
               id="musharaka"
               title="المشاركة" 
-              subtitle="الشراكة في رأس المال"
               icon={<Users className="w-8 h-8" />}
               color="blue"
               isSelected={selectedBuyou === 'musharaka'}
@@ -579,7 +651,6 @@ function InformationPage() {
             <BuyouCard 
               id="salam"
               title="السلم" 
-              subtitle="البيع المؤجل التسليم"
               icon={<BookOpen className="w-8 h-8" />}
               color="purple"
               isSelected={selectedBuyou === 'salam'}
@@ -588,8 +659,7 @@ function InformationPage() {
             <BuyouCard 
               id="istisna"
               title="الاستصناع" 
-              subtitle="عقد تصنيع السلع"
-              icon={<Heart className="w-8 h-8" />}
+              icon={<Wrench className="w-8 h-8" />}
               color="orange"
               isSelected={selectedBuyou === 'istisna'}
               onClick={() => setSelectedBuyou('istisna')}
