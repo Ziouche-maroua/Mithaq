@@ -4,30 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\TransactionType;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TransactionTypeController extends Controller
 {
+   
+
     public function index()
     {
-        $transactionTypes = TransactionType::where('is_active', true)->get();
-        return response()->json($transactionTypes);
-    }
-
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'rules_template' => 'nullable|array',
-            'is_active' => 'boolean'
+        $transactionTypes = TransactionType::orderBy('name')->get();
+        
+        return Inertia::render('TransactionTypes/Index', [
+            'transactionTypes' => $transactionTypes
         ]);
-
-        $transactionType = TransactionType::create($validated);
-        return response()->json($transactionType, 201);
     }
 
-    public function show(TransactionType $transactionType)
+ 
+
+   public function show(TransactionType $transactionType)
     {
-        return response()->json($transactionType);
+        return Inertia::render('TransactionTypes/Show', [
+            'transactionType' => $transactionType->load('transactions')
+        ]);
     }
+    
 }

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('transaction_type_id')->constrained()->onDelete('restrict');
             $table->decimal('amount', 15, 2);
-            $table->string('currency', 3)->default('USD');
+            $table->string('currency', 3)->default('DZD');
             $table->enum('status', ['draft', 'pending', 'approved', 'rejected', 'completed'])->default('draft');
             $table->json('transaction_data')->nullable(); // Store flexible transaction details
             $table->timestamp('created_at')->useCurrent();
