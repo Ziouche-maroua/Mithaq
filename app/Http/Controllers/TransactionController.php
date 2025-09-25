@@ -22,20 +22,23 @@ class TransactionController extends Controller
         ]);
     }
 
+  
+
+
     public function create()
     {
- return Inertia::render('Transactions/Create', [
-        'transactionTypes' => TransactionType::all(),
-        'users' => User::all(),
-    ]);
+//  return Inertia::render('Transactions/Create', [
+//         'transactionTypes' => TransactionType::all(),
+//         'users' => User::all(),
+//     ]);
 
-        // $transactionTypes = TransactionType::where('is_active', true)
-        //     ->orderBy('name')
-        //     ->get();
+        $transactionTypes = TransactionType::where('is_active', true)
+            ->orderBy('name')
+            ->get();
 
-        // return Inertia::render('Transactions/Create', [
-        //     'transactionTypes' => $transactionTypes
-        // ]);
+        return Inertia::render('Transactions/Create', [
+            'transactionTypes' => $transactionTypes
+        ]);
     }
 
     public function store(Request $request)

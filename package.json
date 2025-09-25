@@ -23,6 +23,8 @@
         "vite": "^7.0.4"
     },
     "dependencies": {
-        "inertia": "^0.0.7"
+        "inertia": "^0.0.7",
+        "lucide-react": "^0.544.0",
+        "react-router-dom": "^7.9.2"
     }
 }
