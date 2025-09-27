@@ -38,21 +38,7 @@ export default function Create({ auth, transactionTypes, users }) {
 
                         <form onSubmit={submit} className="space-y-6">
                             {/* User */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">User</label>
-                                <select
-                                    value={data.user_id}
-                                    onChange={(e) => setData('user_id', e.target.value)}
-                                    className="mt-1 block w-full rounded border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                >
-                                    <option value="">Select User</option>
-                                    {users.map(user => (
-                                        <option key={user.id} value={user.id}>{user.name}</option>
-                                    ))}
-                                </select>
-                                {errors.user_id && <p className="text-red-500 text-sm mt-1">{errors.user_id}</p>}
-                            </div>
-
+                           
                             {/* Transaction Type */}
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Transaction Type</label>

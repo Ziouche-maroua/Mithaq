@@ -35,12 +35,7 @@ class Transaction extends Model
         return $this->belongsTo(TransactionType::class);
     }
 
-    // Simple method to create a transaction
-    public function create()
-    {
-        $this->status = 'draft';
-        return $this->save();
-    }
+    
 
     // Simple method to update status
     public function updateStatus($status)
