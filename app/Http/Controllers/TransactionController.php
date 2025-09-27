@@ -13,9 +13,18 @@ class TransactionController extends Controller
 {
     public function index()
     {
+        if (Auth::user()->is_admin) {
+        // Admin sees all transactions
         $transactions = Transaction::with(['user', 'transactionType'])
             ->orderBy('created_at', 'desc')
             ->get();
+    } else {
+        // Normal user sees only their transactions
+        $transactions = Transaction::with(['user', 'transactionType'])
+            ->where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
 
         return Inertia::render('Transactions/Index', [
             'transactions' => $transactions
@@ -27,34 +36,33 @@ class TransactionController extends Controller
 
     public function create()
     {
-//  return Inertia::render('Transactions/Create', [
-//         'transactionTypes' => TransactionType::all(),
-//         'users' => User::all(),
-//     ]);
+ return Inertia::render('Transactions/Create', [
+        'transactionTypes' => TransactionType::all(),
+        'users' => User::all(),
+    ]);
 
-        $transactionTypes = TransactionType::where('is_active', true)
-            ->orderBy('name')
-            ->get();
-
-        return Inertia::render('Transactions/Create', [
-            'transactionTypes' => $transactionTypes
-        ]);
+      
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'transaction_type_id' => 'required|exists:transaction_types,id',
-            'amount' => 'required|numeric|min:0.01',
-            'currency' => 'nullable|string|max:3',
-            'transaction_data' => 'nullable|array'
-        ]);
+         $validated = $request->validate([
+        'transaction_type_id' => 'required|exists:transaction_types,id',
+        'amount' => 'required|numeric|min:0.01',
+        'currency' => 'nullable|string|max:3',
+        'transaction_data' => 'nullable|array',
+        'status' => 'nullable|string|in:draft,pending,approved,rejected,completed'
+    ]);
 
-        $validated['user_id'] = Auth::id();
-        $validated['currency'] = $validated['currency'] ?? 'USD';
+    $validated['user_id'] = Auth::id();
+    $validated['currency'] = $validated['currency'] ?? 'USD';
+
+    // Only admin can set status, otherwise default to 'draft'
+    if (!Auth::user()->is_admin) {
         $validated['status'] = 'draft';
+    }
 
-        Transaction::create($validated);
+    Transaction::create($validated);
 
         return redirect()->route('transactions.index')
             ->with('success', 'Transaction created successfully.');
