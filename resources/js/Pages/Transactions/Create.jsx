@@ -77,23 +77,23 @@ export default function Create({ auth, transactionTypes, users }) {
                                     className="mt-1 block w-full rounded border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
                                 />
                             </div>
-
-                            {/* Status */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                                <select
-                                    value={data.status}
-                                    onChange={(e) => setData('status', e.target.value)}
-                                    className="mt-1 block w-full rounded border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                >
-                                    <option value="draft">Draft</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="approved">Approved</option>
-                                    <option value="rejected">Rejected</option>
-                                    <option value="completed">Completed</option>
-                                </select>
-                            </div>
-
+{/* Status */}
+                           {auth.user.is_admin && (
+    <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+        <select
+            value={data.status}
+            onChange={(e) => setData('status', e.target.value)}
+            className="mt-1 block w-full rounded border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+        >
+            <option value="draft">Draft</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="completed">Completed</option>
+        </select>
+    </div>
+)}
                             {/* Submit */}
                             <div className="flex justify-end">
                                 <button
