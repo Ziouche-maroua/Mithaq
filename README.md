@@ -66,3 +66,14 @@ Users can explore different transaction types, learn their main principles, and 
 2.  **Simulate:** Users fill out a form describing their own transaction scenario.  
 3.  **Validate:** The system checks the input based on simple predefined conditions.  
 4.  **Result:** A validation message and explanation are displayed clearly to the user.
+
+   
+## 🧷 **How to Run Locally**
+
+### 🐳 **Start the project**
+```bash
+# 1️⃣ Build and start Docker containers
+docker-compose up -d --build
+
+# 2️⃣ Access the Laravel app
+http://localhost:8000
