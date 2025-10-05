@@ -1,0 +1,87 @@
+classDiagram
+    class User {
+        +int id
+        +string name
+        +string email
+        +string passwordHash
+        +string role [user, admin]
+        +datetime createdAt
+        +register()
+        +login()
+        +submitTransaction()
+    }
+
+    class TransactionType {
+        +int id
+        +string name [Murabaha, Musharaka, Taqsit, Salam, Istisna3]
+        +string description
+        +bool isActive
+        +getExamples()
+    }
+
+    class Transaction {
+        +int id
+        +int userId
+        +int transactionTypeId
+        +decimal amount
+        +string currency
+        +string description
+        +string status [draft, submitted, validated]
+        +json transactionData
+        +datetime createdAt
+        +create()
+        +validate()
+        +getFeedback()
+    }
+
+    class ValidationResult {
+        +int id
+        +int transactionId
+        +bool passed
+        +string message
+        +string explanation
+        +string source [manual, ai]
+        +datetime checkedAt
+    }
+
+    class AIAgent {
+        +analyzeTransaction(transactionData)
+        +returnValidationResult()
+    }
+
+    class BaseValidator {
+        <<abstract>>
+        +validate(Transaction t) ValidationResult
+    }
+
+    class MurabahaValidator {
+        +validate(Transaction t) ValidationResult
+    }
+
+    class MusharakaValidator {
+        +validate(Transaction t) ValidationResult
+    }
+
+    class TaqsitValidator {
+        +validate(Transaction t) ValidationResult
+    }
+
+    class SalamValidator {
+        +validate(Transaction t) ValidationResult
+    }
+
+    class Istisna3Validator {
+        +validate(Transaction t) ValidationResult
+    }
+
+    %% Relationships
+    User "1" --> "*" Transaction : creates
+    TransactionType "1" --> "*" Transaction : defines
+    Transaction "1" --> "*" ValidationResult : produces
+    AIAgent --> ValidationResult : generates
+    BaseValidator <|-- MurabahaValidator
+    BaseValidator <|-- MusharakaValidator
+    BaseValidator <|-- TaqsitValidator
+    BaseValidator <|-- SalamValidator
+    BaseValidator <|-- Istisna3Validator
+    Transaction --> BaseValidator : uses
